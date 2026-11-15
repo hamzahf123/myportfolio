@@ -22,8 +22,7 @@ const Skills = () => (
       {SkillsInfo.map((category) => (
         <div
           key={category.title}
-          className="bg-gray-900 backdrop-blur-md px-6 sm:px-10 py-8 sm:py-6 mb-10 w-full sm:w-[48%] rounded-2xl border border-white 
-          shadow-[0_0_20px_1px_rgba(130,69,236,0.3)]"
+     className="bg-white/5 backdrop-blur-xl px-6 sm:px-10 py-8 sm:py-6 mb-10 w-full sm:w-[48%] rounded-2xl border border-white/10 shadow-[0_0_30px_rgba(130,69,236,0.15)] hover:shadow-[0_0_40px_rgba(130,69,236,0.25)] transition-all duration-300"
         >
           <h3 className="text-2xl sm:text-3xl font-semibold text-gray-400 mb-4 text-center">
             {category.title}
