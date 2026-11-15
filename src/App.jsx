@@ -11,11 +11,15 @@ import BlurBlob from './components/BlurBlob';
 
 const App = () => {
   return (
-    <div className="bg-[#050414]">
+    <div className="bg-[#030014] min-h-screen relative overflow-hidden">
 
-       <BlurBlob position={{ top: '35%', left: '20%' }} size={{ width: '30%', height: '40%' }} />
+      {/* Soft Glow Blobs */}
+      <BlurBlob position={{ top: '20%', left: '15%' }} size={{ width: '35%', height: '40%' }} />
+      <BlurBlob position={{ top: '60%', left: '80%' }} size={{ width: '30%', height: '35%' }} />
+      <BlurBlob position={{ top: '80%', left: '25%' }} size={{ width: '25%', height: '30%' }} />
 
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+      {/* Subtle Grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f15_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f15_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,#000_60%,transparent_100%)] pointer-events-none"></div>
       
       <div className="relative pt-20">
         <Navbar />
@@ -27,7 +31,6 @@ const App = () => {
         <Contact />
         <Footer />
       </div>
-
     </div>
   );
 };
