@@ -11,24 +11,27 @@ import BlurBlob from './components/BlurBlob';
 
 const App = () => {
   return (
-    <div className="bg-[#030014] min-h-screen relative overflow-hidden">
+    <div className="relative min-h-screen overflow-x-clip bg-ink-950 font-sans text-platinum">
 
-      {/* Soft Glow Blobs */}
-      <BlurBlob position={{ top: '20%', left: '15%' }} size={{ width: '35%', height: '40%' }} />
-      <BlurBlob position={{ top: '60%', left: '80%' }} size={{ width: '30%', height: '35%' }} />
-      <BlurBlob position={{ top: '80%', left: '25%' }} size={{ width: '25%', height: '30%' }} />
+      {/* Ambient light: champagne, deep navy and a trace of platinum */}
+      <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+        <BlurBlob tone="gold" position={{ top: '6%', left: '14%' }} size={{ width: '58vw', height: '58vw' }} />
+        <BlurBlob tone="navy" position={{ top: '62%', left: '92%' }} size={{ width: '64vw', height: '64vw' }} delay="-12s" />
+        <BlurBlob tone="platinum" position={{ top: '100%', left: '30%' }} size={{ width: '48vw', height: '48vw' }} delay="-24s" />
+      </div>
+      <div aria-hidden="true" className="vignette" />
+      <div aria-hidden="true" className="grain" />
 
-      {/* Subtle Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f15_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f15_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,#000_60%,transparent_100%)] pointer-events-none"></div>
-      
-      <div className="relative pt-20">
+      <div className="relative z-10">
         <Navbar />
-        <About />
-        <Skills />
-        <Experience />
-        <Work />
-        <Education />
-        <Contact />
+        <main>
+          <About />
+          <Skills />
+          <Experience />
+          <Work />
+          <Education />
+          <Contact />
+        </main>
         <Footer />
       </div>
     </div>
