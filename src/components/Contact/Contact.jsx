@@ -2,6 +2,9 @@ import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Reveal from "../ui/Reveal";
+import SectionTitle from "../ui/SectionTitle";
+import MagneticButton from "../ui/MagneticButton";
 
 const Contact = () => {
   const form = useRef();
@@ -47,66 +50,76 @@ const Contact = () => {
   };
 
   return (
-    <section
-      id="contact"
-      className="flex flex-col items-center justify-center py-24 px-[12vw] md:px-[7vw] lg:px-[20vw]"
-    >
+    <section id="contact" className="section-pad relative">
+      <div className="hairline absolute inset-x-0 top-0" />
       {/* Toast Container */}
       <ToastContainer />
 
-      {/* Section Title */}
-      <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold text-white">CONTACT</h2>
-        <div className="w-32 h-1 bg-purple-500 mx-auto mt-4"></div>
-        <p className="text-gray-400 mt-4 text-lg font-semibold">
+      <div className="wrap">
+        {/* Section Title */}
+        <SectionTitle title="CONTACT">
           I’d love to hear from you—reach out for any opportunities or questions!
-        </p>
-      </div>
+        </SectionTitle>
 
-      {/* Contact Form */}
-      <div className="mt-8 w-full max-w-md bg-[#0d081f] p-6 rounded-lg shadow-lg border border-gray-700">
-        <h3 className="text-xl font-semibold text-white text-center">
-          Connect With Me <span className="ml-1">🚀</span>
-        </h3>
+        {/* Contact Form */}
+        <Reveal className="relative mx-auto w-full max-w-2xl">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -inset-x-10 -inset-y-16 -z-10 rounded-full opacity-80"
+            style={{
+              background:
+                'radial-gradient(closest-side, rgba(217,189,132,0.10), transparent 100%)',
+            }}
+          />
+          <div className="glass rounded-[2rem] p-7 sm:p-11">
+            <h3 className="text-center text-2xl font-light tracking-[-0.03em] text-platinum sm:text-[1.9rem]">
+              Connect With Me <span className="ml-1">🚀</span>
+            </h3>
+            <span className="mx-auto mt-5 block h-px w-16 bg-gradient-to-r from-transparent via-gold-400/70 to-transparent" />
 
-        <form ref={form} onSubmit={sendEmail} className="mt-4 flex flex-col space-y-4">
-          <input
-            type="email"
-            name="user_email"
-            placeholder="Your Email"
-            required
-            className="w-full p-3 rounded-md bg-[#131025] text-white border border-gray-600 focus:outline-none focus:border-purple-500"
-          />
-          <input
-            type="text"
-            name="user_name"
-            placeholder="Your Name"
-            required
-            className="w-full p-3 rounded-md bg-[#131025] text-white border border-gray-600 focus:outline-none focus:border-purple-500"
-          />
-          <input
-            type="text"
-            name="subject"
-            placeholder="Subject"
-            required
-            className="w-full p-3 rounded-md bg-[#131025] text-white border border-gray-600 focus:outline-none focus:border-purple-500"
-          />
-          <textarea
-            name="message"
-            placeholder="Message"
-            rows="4"
-            required
-            className="w-full p-3 rounded-md bg-[#131025] text-white border border-gray-600 focus:outline-none focus:border-purple-500"
-          />
-          
-          {/* Send Button */}
-          <button
-            type="submit"
-            className="w-full bg-gradient-to-r from-purple-600 to-pink-500 py-3 text-white font-semibold rounded-md hover:opacity-90 transition"
-          >
-            Send
-          </button>
-        </form>
+            <form ref={form} onSubmit={sendEmail} className="mt-9 grid gap-4 sm:grid-cols-2">
+              <input
+                type="email"
+                name="user_email"
+                placeholder="Your Email"
+                aria-label="Your Email"
+                required
+                className="field"
+              />
+              <input
+                type="text"
+                name="user_name"
+                placeholder="Your Name"
+                aria-label="Your Name"
+                required
+                className="field"
+              />
+              <input
+                type="text"
+                name="subject"
+                placeholder="Subject"
+                aria-label="Subject"
+                required
+                className="field sm:col-span-2"
+              />
+              <textarea
+                name="message"
+                placeholder="Message"
+                aria-label="Message"
+                rows="5"
+                required
+                className="field resize-none sm:col-span-2"
+              />
+
+              {/* Send Button */}
+              <div className="mt-3 sm:col-span-2">
+                <MagneticButton type="submit" className="btn-gold w-full !py-4" strength={0.12}>
+                  Send
+                </MagneticButton>
+              </div>
+            </form>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

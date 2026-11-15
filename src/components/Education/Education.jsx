@@ -1,80 +1,72 @@
 import React from "react";
 import { education } from "../../constants"; // Import the education data
+import Reveal from "../ui/Reveal";
+import Spotlight from "../ui/Spotlight";
+import SectionTitle from "../ui/SectionTitle";
 
 const Education = () => {
   return (
-    <section
-      id="education"
-      className="py-24 pb-24 px-[12vw] md:px-[7vw] lg:px-[16vw] font-sans bg-skills-gradient clip-path-custom-3"
-    >
-      {/* Section Title */}
-      <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold text-white">EDUCATION</h2>
-        <div className="w-32 h-1 bg-purple-500 mx-auto mt-4"></div>
-        <p className="text-gray-400 mt-4 text-lg font-semibold">
+    <section id="education" className="section-pad relative">
+      <div className="hairline absolute inset-x-0 top-0" />
+      <div className="wrap">
+        {/* Section Title */}
+        <SectionTitle title="EDUCATION">
           My education has been a journey of learning and development. Here are the details of my academic background
-        </p>
-      </div>
+        </SectionTitle>
 
-      {/* Education Timeline */}
-      <div className="relative">
-        {/* Vertical line */}
-        <div className="absolute sm:left-1/2 left-0 transform -translate-x-1/2 sm:-translate-x-0 w-1 bg-white h-full"></div>
-
-        {/* Education Entries */}
-        {education.map((edu, index) => (
+        {/* Education Timeline */}
+        <div className="relative pl-9 sm:pl-14">
+          {/* Vertical line */}
           <div
-            key={edu.id}
-            className={`flex flex-col sm:flex-row items-center mb-16 ${
-              index % 2 === 0 ? "sm:justify-start" : "sm:justify-end"
-            }`}
-          >
-            {/* Timeline Circle */}
-            <div className="absolute sm:left-1/2 left-0 transform -translate-x-1/2 bg-gray-400 border-4 border-[#8245ec] w-12 h-12 sm:w-16 sm:h-16 rounded-full flex justify-center items-center z-10">
-              <img
-                src={edu.img}
-                alt={edu.school}
-                className="w-full h-full object-cover rounded-full"
-              />
-            </div>
+            aria-hidden="true"
+            className="absolute bottom-0 left-[7px] top-3 w-px bg-gradient-to-b from-gold-400/70 via-gold-500/20 to-transparent sm:left-[11px]"
+          />
 
-            {/* Content Section */}
-            <div
-              className={`w-full sm:max-w-md p-4 sm:p-8 rounded-2xl shadow-2xl border border-white bg-gray-900 backdrop-blur-md shadow-[0_0_20px_1px_rgba(130,69,236,0.3)] ${
-                index % 2 === 0 ? "sm:ml-0" : "sm:mr-0"
-              } sm:ml-44 sm:mr-44 ml-8 transform transition-transform duration-300 hover:scale-105`}
-            >
-              {/* Flex container for image and text */}
-              <div className="flex items-center space-x-6">
-                {/* School Logo/Image */}
-                <div className="w-24 h-16 bg-white rounded-md overflow-hidden">
-                  <img
-                    src={edu.img}
-                    alt={edu.school}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+          {/* Education Entries */}
+          {education.map((edu) => (
+            <Reveal key={edu.id} className="relative mb-12 last:mb-0">
+              {/* Timeline marker */}
+              <span
+                aria-hidden="true"
+                className="absolute -left-9 top-9 grid h-[15px] w-[15px] place-items-center rounded-full border border-gold-400/60 bg-ink-950 sm:-left-14 sm:h-[23px] sm:w-[23px]"
+              >
+                <span className="h-[5px] w-[5px] rounded-full bg-gold-300 shadow-[0_0_14px_3px_rgba(217,189,132,0.7)] sm:h-[7px] sm:w-[7px]" />
+              </span>
 
-                {/* Degree, School Name, and Date */}
-                <div className="flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-xl sm:text-xl font-semibold text-white">
-                      {edu.degree}
-                    </h3>
-                    <h4 className="text-md sm:text-sm text-gray-300">
-                      {edu.school}
-                    </h4>
+              {/* Content Section */}
+              <Spotlight className="glass rounded-[1.75rem] p-7 sm:p-10">
+                {/* Flex container for image and text */}
+                <div className="flex items-center gap-5 sm:gap-6">
+                  {/* School Logo/Image */}
+                  <div className="grid h-16 w-20 shrink-0 place-items-center overflow-hidden rounded-2xl bg-[#ecebe6] p-2 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8),inset_0_-2px_6px_rgba(0,0,0,0.1)] sm:h-20 sm:w-28">
+                    <img
+                      src={edu.img}
+                      alt={edu.school}
+                      className="h-full w-full object-contain"
+                    />
                   </div>
-                  {/* Date at the bottom */}
-                  <p className="text-sm text-gray-500 mt-2">{edu.date}</p>
-                </div>
-              </div>
 
-              <p className="mt-4 text-gray-400 font-bold"> {edu.grade}</p>
-              <p className="mt-4 text-gray-400">{edu.desc}</p>
-            </div>
-          </div>
-        ))}
+                  {/* Degree, School Name, and Date */}
+                  <div className="flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-xl font-normal leading-tight tracking-[-0.03em] text-platinum sm:text-[1.7rem]">
+                        {edu.degree}
+                      </h3>
+                      <h4 className="mt-1.5 text-sm leading-snug text-gold-400 sm:text-base">
+                        {edu.school}
+                      </h4>
+                    </div>
+                    {/* Date at the bottom */}
+                    <p className="mt-2 text-sm text-fog">{edu.date}</p>
+                  </div>
+                </div>
+
+                {edu.grade && <p className="mt-6 font-medium text-mist">{edu.grade}</p>}
+                <p className="mt-8 max-w-[44rem] text-[0.98rem] leading-[1.85] text-mist">{edu.desc}</p>
+              </Spotlight>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );
